@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+	//$   是jquery的缩写
+
+	$(document).ready(function(){
+		$('#username').blur(function(){//当id=username的输入框，失去焦点，则触发
+		//	alert($(this).val());
+		//	$.get(url,data,callback,dataType);
+		$.get("/UserRegister_Ajax/user",
+				{u:$(this).val(), //发送到url的数据
+				 o:'end'},
+				function(data){
+					 $('#userLabel').text(data);
+				});
+		});
+	});
+
+
+</script>
+
+</head>
+<body>
+
+<form action="">
+	<div> 
+		<label> 昵称</label>
+		<input type="text" id="username" name="username" placeholder="enter username" required="required" />
+	<label id="userLabel">   </label>
+	</div>
+
+	<div>
+		<label> 其他</label>
+		<input name="other" placeholder="other"  />
+	</div>
+
+
+
+
+</form>
+
+
+
+</body>
+</html>
