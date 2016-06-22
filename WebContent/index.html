@@ -8,6 +8,23 @@
 	//$   是jquery的缩写
 
 	$(document).ready(function(){
+		
+		
+		//ajax的Post请求
+		$('#btnSend').click(function() {//点击id=btnSend的按钮，执行
+			//发数据
+			$.post("/UserRegister_Ajax/msg",
+					{nick:$('#nick').val() ,msg:$('#idmsg').val()},
+					function(m) {
+						var p = $('<p></p>').text(m.author);
+						var a = $('<a href="#"></a>').text(m.content);
+						p.append(a);
+						$('#show').append(p)
+					});
+					
+			
+		});		
+		
 		$('#username').blur(function(){//当id=username的输入框，失去焦点，则触发
 		//	alert($(this).val());
 		//	$.get(url,data,callback,dataType);
@@ -37,11 +54,19 @@
 		<label> 其他</label>
 		<input name="other" placeholder="other"  />
 	</div>
-
-
-
-
 </form>
+<hr/>
+
+
+<div>	<input id="nick" type="text" placeholder="Nick" /></div>
+<div>	<textarea id="idmsg" rows="3" cols="50"></textarea></div>
+<div>	<button id="btnSend">发送</button> </div>
+
+<div id="show">
+	
+
+
+</div>
 
 
 

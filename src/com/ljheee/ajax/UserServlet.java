@@ -37,7 +37,7 @@ public class UserServlet extends HttpServlet {
 		String other = request.getParameter("o");
 		
 		String msg = "可用";
-		if(users.contains(name)){
+		if(users.contains(name)||name.equals("")){
 			msg = "不可用";
 		}
 		
